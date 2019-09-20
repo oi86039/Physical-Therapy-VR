@@ -1,5 +1,8 @@
-2 ; Welcome!
+2 ; Hello!
 5 ; My name is Omar Ilyas. I'm here to demonstrate the dialogue for you.
 7 ; Please note that this is only a demo. The dialogue will change as the project advances.
-4.3 ; This text will loop now!
+4.3 ; But until then, check this out...
+10 ; The time of day is set to be randomly chosen every time you start or restart the game. To restart, press the B button on your controller.
+3.6 ; Try it out!
+4.3 ; But in case you don't, this text will loop now!
 2.7 ;  
