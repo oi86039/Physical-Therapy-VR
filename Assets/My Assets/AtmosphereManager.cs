@@ -8,33 +8,39 @@ public class AtmosphereManager : MonoBehaviour
     public int num; //Number to decide which atmosphere to take
 
     Material skybox;
-    public Quaternion sunRotation;
-    public Transform sun;
+    //public Quaternion sunRotation;
+  //  public bool sunOn; //Is the sun active or not?
+   // public Transform sun;
     AudioClip music;
 
 
     void Awake()
     {
         //Generate random number and pick properties based on it
-        if (!gameManager.Instance.debugMode) 
-        num = Random.Range(1, 5);
+        if (!gameManager.Instance.debugMode)
+            num = Random.Range(1, 5);
 
         switch (num)
         {
             case 1: //Daybreak
                 skybox = Resources.Load<Material>("CloudyCrown_Daybreak");
+                               // sun.gameObject.SetActive(false);
+
                 break;
             case 2: //Midday
                 skybox = Resources.Load<Material>("CloudyCrown_Midday");
                 break;
             case 3: //Sunset
                 skybox = Resources.Load<Material>("CloudyCrown_Sunset");
+               // sun.gameObject.SetActive(false);
                 break;
             case 4: //Evening
                 skybox = Resources.Load<Material>("CloudyCrown_Evening");
+               // sun.gameObject.SetActive(false);
                 break;
             case 5: //Midnight
                 skybox = Resources.Load<Material>("CloudyCrown_Midnight");
+               // sun.gameObject.SetActive(false);
                 break;
         }
 
@@ -53,6 +59,6 @@ public class AtmosphereManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sun.rotation = sunRotation;
+        //sun.rotation = sunRotation;
     }
 }

@@ -1,0 +1,5 @@
+2 ; Welcome!
+5 ; My name is Omar Ilyas. I'm here to demonstrate the dialogue for you.
+7 ; Please note that this is only a demo. The dialogue will change as the project advances.
+4.3 ; This text will loop now!
+2.7 ;  
