@@ -32,7 +32,7 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update() {
 
-        if (OVRInput.GetDown(OVRInput.Button.Two)) {
+        if (OVRInput.GetDown(OVRInput.Button.Start)) {
             SceneManager.LoadScene(0);
         }
     }
