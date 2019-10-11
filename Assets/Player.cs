@@ -12,8 +12,11 @@ public class Player : MonoBehaviour
     //Uses laser pointer script, credit to @Moaid_T4
 
     public LineRenderer laserLineRenderer;
+    public Color color;
+    public Color GrabColor;
     public float laserWidth = 0.1f;
-    public float laserMaxLength = 5f;
+    public float laserLength = 0f;
+    public float laserMaxLength = 20f;
 
     private Vector3 start_model_transform; //Position where model starts in scene
 
@@ -51,18 +54,31 @@ public class Player : MonoBehaviour
         //On point, raycast, have laser pointer, and be able to grab
         if (!OVRInput.Get(OVRInput.Touch.PrimaryIndexTrigger, controller) && !isGrabbing)
         {
-            ShootLaserFromTargetPosition(transform.position, transform.forward, laserMaxLength);
             laserLineRenderer.enabled = true;
+            laserLineRenderer.startColor = laserLineRenderer.endColor = color;
+            laserLength = Mathf.Lerp(laserLength, laserMaxLength, 0.08f);
+            ShootLaserFromTargetPosition(transform.position, transform.forward, laserLength);
         }
-        //If not pointing or grabbing something, disable laser and ability to grab
-        else
+        //If not pointing or are grabbing something, disable ability to grab
+        else if (isGrabbing)
         {
+            //laserLength = Mathf.Lerp(laserLength, 0, -0.08f);
+            laserLineRenderer.startColor = laserLineRenderer.endColor = GrabColor;
+            ShootLaserToModel(transform.position);
             canGrab = false;
-            laserLineRenderer.enabled = false;
         }
+
+        //If not pointing or grabbing, disable laser and ability to grab
+        else {
+            laserLineRenderer.startColor = laserLineRenderer.endColor = color;
+            laserLineRenderer.enabled = false;
+            canGrab = false;
+        }
+
         //If we are able to grab, or are currently grabbing something and we hold the trigger, Grab and move the model
         if ((canGrab || isGrabbing) && OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, controller) > 0.5f)
         {
+            ShootLaserToModel(transform.position);
             GrabModel();
         }
         //If not grabbing or cannot grab
@@ -71,7 +87,6 @@ public class Player : MonoBehaviour
             isGrabbing = false;
             origSet = false;
         }
-
 
     }
 
@@ -108,6 +123,14 @@ public class Player : MonoBehaviour
         laserLineRenderer.SetPosition(0, targetPosition);
         laserLineRenderer.SetPosition(1, endPosition);
     }
+
+    //Shoot laser to specified end point
+    void ShootLaserToModel(Vector3 targetPosition)
+    {
+        laserLineRenderer.SetPosition(0, targetPosition);
+        laserLineRenderer.SetPosition(1, model.transform.position + new Vector3(0,1.4f,0));
+    }
+
 
     void GrabModel()
     {

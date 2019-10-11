@@ -1,8 +1,10 @@
-2 ; Hello!
-5 ; My name is Omar Ilyas. I'm here to demonstrate the dialogue for you.
-7 ; Please note that this is only a demo. The dialogue will change as the project advances.
-4.3 ; But until then, check this out...
-10 ; The time of day is set to be randomly chosen every time you start or restart the game. To restart, press the B button on your controller.
-3.6 ; Try it out!
-4.3 ; But in case you don't, this text will loop now!
+3.1 ; Hello! Omar here!
+3.3 ; Welcome to the Interaction Update!
+4 ; If you point your fingers, you'll shoot out these 2 lasers.
+4 ; These lasers can be used to adjust the trainer's position.
+6 ; Point your finger(s) at the model and grab him using the Hand Trigger.
+6 ; With him grabbed, you can move him by moving the hand you're grabbing him with.
+6 ; You can also rotate him by using the joystick while he is grabbed.
+7.3 ; That's all for now! Motion capture keeps being delayed due to Co-Ed schedules. It should be done soon.
+4 ; Ok, begin text loop...
 2.7 ;  
